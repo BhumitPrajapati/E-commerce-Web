@@ -40,18 +40,54 @@
 `CreatedAt`:           TIMESTAMP
 
 
-**Products Schema (MongoDB)**
+## Order
 
-- `name`: String
-- `description`: String
-- `price`: Number
-- `category`: String
-- `stock`: Number
-- `imageUrl`: String
+`OrderId`:             INT         
+`UserId`:              INT         
+`ProductId`:           INT         
+`Quntity`:             INT         
+`CreatedAt`:           TIMESTAMP   
+`ModifiedAt`:          TIMESTAMP   
 
-**Users Schema (MongoDB)**
+## OrderDetails
 
-- `username`: String
-- `password`: String
-- `email`: String
+`Id`:                  INT      
+`OrderId`:             INT      
+`UserId`:              INT      
+`ProductId`:           INT      
+`Total`:               DECIMAL  
+`PaymentId`:           INT      
+`CreatedAt`:           TIMESTAMP
 
+## PaymentDetails
+
+`PaymentId`:            INT      
+`OrderId`:              INT      
+`UserId`:               INT      
+`ProductId`:            INT      
+`Total`:                DECIMAL  
+`Status`:               VARCHAR  
+`CreatedAt`:            TIMESTAMP
+
+## UserDetails
+
+`UserId`              INT       
+`Address`             VARCHAR   
+`City`                VARCHAR   
+`PostalCode`          VARCHAR   
+`Country`             VARCHAR   
+`Mobile`              VARCHAR   
+`MobileCountryCode`   VARCHAR   
+`Email`               VARCHAR   
+`CreatedAt`           TIMESTAMP 
+
+## User
+
+`UserId`:              INT      
+`UserName`:            VARCHAR  
+`Password`:            VARCHAR  
+`FirstName`:           VARCHAR  
+`LastName`:            VARCHAR  
+`IsAdmin`:             BOOLEAN  
+`CreatedAt`:           TIMESTAMP
+`ModifiedAt`:          TIMESTAMP
