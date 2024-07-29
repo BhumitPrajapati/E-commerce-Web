@@ -3,7 +3,7 @@ const sql = require('mssql');
 
 var config = {
     "server": "Bhumit/SQLEXPRESS",
-    "database": "SIS",
+    "database": "EcommerceDB",
     "user": "sa",
     "password": "sa",
     "options": {
