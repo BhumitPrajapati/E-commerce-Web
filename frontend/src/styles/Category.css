@@ -1,0 +1,17 @@
+.category-list {
+    padding: 20px;
+}
+
+.category-list h1 {
+    margin-bottom: 20px;
+}
+
+.category-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-list li {
+    margin: 10px 0;
+    font-size: 18px;
+}

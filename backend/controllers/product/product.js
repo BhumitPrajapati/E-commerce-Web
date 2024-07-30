@@ -17,4 +17,38 @@ const getProduct = async (req, res) => {
 
 }
 
-module.exports = { getProduct };
+const getProductById = async (req, res) => {
+    try {
+        const request = new sql.Request(connection);
+        request.query('select  * from product', (err, data) => {
+            if (err) {
+                console.log(err);
+            }
+            // console.log(data);
+            res.json(data.recordset);
+            // console.log(data.recordsets);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+const getCategories = async (req, res) => {
+    try {
+        const request = new sql.Request(connection);
+        request.query('select  * from product', (err, data) => {
+            if (err) {
+                console.log(err);
+            }
+            // console.log(data);
+            res.json(data.recordset);
+            // console.log(data.recordsets);
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+module.exports = { getProduct, getProductById, getCategories };
