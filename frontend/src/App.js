@@ -1,22 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductDetail from './components/ProductDetail';
-import CategoryList from './components/Category';
-// import ProductList from './components/ProductList';
-import '../src/styles/App.css';
 import Home from './components/home';
+import Getsony from "./components/categorywiseProduct";
 
 const App = () => {
   return (
     <Router>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/products" element={<ProductList />} /> */}
-          <Route path="/products/getCategory" element={<CategoryList />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products/getSony/:categoryId" element={<Getsony />} />
+        <Route path="/products/getCanon/:categoryId" element={<Getsony />} />
+      </Routes>
     </Router>
   );
 };

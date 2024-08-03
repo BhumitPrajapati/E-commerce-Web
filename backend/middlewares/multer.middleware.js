@@ -36,4 +36,29 @@ const upload = multer({
     }
 });
 
+
+// Function to delete all files in the uploads directory
+const deleteFiles = () => {
+    fs.readdir(uploadsDir, (err, files) => {
+        if (err) {
+            console.log(`Error reading files: ${err}`);
+            return;
+        }
+        for (const file of files) {
+            const filePath = path.join(uploadsDir, file);
+            fs.unlink(filePath, (err) => {
+                if (err) {
+                    console.log(`Error deleting file: ${filePath}, ${err}`);
+                } else {
+                    console.log(`Deleted file: ${filePath}`);
+                }
+            });
+        }
+    });
+};
+
+// Schedule the file deletion every 24 hours
+setInterval(deleteFiles, 86400000);
+
+
 module.exports = upload;

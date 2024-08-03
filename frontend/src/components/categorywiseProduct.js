@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Navbar from './navbar';
 import { getProducts } from '../services/api';
 
 
-const Home = () => {
+const Getsony = () => {
     const [products, setProducts] = useState([]);
+    const { categoryId } = useParams();
 
+    const categoryContent = {
+        1: { title: 'Sony Products', description: 'Discover the latest Sony products.' },
+        2: { title: 'Canon Products', description: 'Explore the best Canon products.' }
+    };
+
+    const { title, description } = categoryContent[categoryId];
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                let data = await getProducts();
+                let data = await getProducts(categoryId);
                 data = data.data[0];
-                setProducts(data);
+
                 if (Array.isArray(data)) {
                     setProducts(data);
                 } else {
@@ -22,7 +30,7 @@ const Home = () => {
             }
         };
         fetchProducts();
-    }, []);
+    }, [categoryId]);
 
     return (
         <div>
@@ -30,11 +38,9 @@ const Home = () => {
             <main>
                 <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                     <div className="px-4 py-6 sm:px-0">
-                        <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 flex items-center justify-center">
-                            <img src="/mainHomepage.jpg" alt="Description" className="object-cover h-full w-full rounded-lg" />
-                        </div>
+                        <h3 className="text-3xl font-bold text-gray-900">{title}</h3>
+                        <p className="text-lg text-gray-600">{description}</p>
                     </div>
-
                     <div className="bg-white">
                         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                             <h2 className="sr-only">Products</h2>
@@ -62,4 +68,4 @@ const Home = () => {
 };
 
 
-export default Home;
+export default Getsony;
