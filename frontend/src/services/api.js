@@ -4,12 +4,44 @@ const api = axios.create({
     baseURL: 'http://localhost:3030/api',
 });
 
-export const getProducts = async (categoryId) => {
+export const getProducts = async (categoryId, productId) => {
     try {
-        const response = await api.get('/', { params: { categoryId } });
-        return response.data;
+
+        // if (categoryId) {
+        //     url += `?categoryId=${categoryId}`;
+        // } else if (productId) {
+        //     url += `?productId=${productId}`;
+        // }
+        // return await axios.get(url);
+        let finalData
+        if (categoryId) {
+            finalData = await api.get('/', { params: { categoryId } });
+        } else if (productId) {
+            finalData = await api.get('/', { params: { productId } });
+        }
+        else {
+            finalData = await api.get('/');
+        }
+        console.log('Response from getProducts: ', finalData.data);
+
+
+        // const response = await api.get('/', { params: { categoryId } });
+        // console.log('Response from getProducts: ', response.data);
+
+        return finalData.data;
     } catch (error) {
         console.log('Error fetching products: ', error);
         throw error;
     }
 };
+
+export const adminLogin = async (username, password) => {
+    try {
+        const response = await api.post('/login', { username, password });
+        console.log('Response from adminLogin: ', response.data);
+        return response.data;
+    } catch (error) {
+        console.log('Error logging in: ', error);
+        throw error;
+    }
+}

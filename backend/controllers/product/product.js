@@ -4,24 +4,25 @@ const { message } = require('../../middlewares/msgHandler');
 const getProduct = async (req, res) => {
     try {
         const sqlRequest = new sql.Request(connection);
-        let categoryId = req.query.categoryId;
+        let { categoryId, productId } = req.query;
 
-        let query = 'select product_name, product_price, product_image, product_desc from product;';
-        switch (parseInt(categoryId, 10)) {
-            case 1:
-                query = `select product_name, product_price, product_image, product_desc
-                from product
-                where product_category_id = 1`;
-                break;
-            case 2:
-                query = `select product_name, product_price, product_image, product_desc
-                from product
-                where product_category_id = 2`;
-                break;
-            default:
-                query;
-                break;
+        let query;
+
+        if (productId) {
+            query = `select product_name, product_price, product_image, product_desc, product_id
+            from product
+            where product_id = ${productId}`;
         }
+        else if(categoryId){
+            query = `select product_name, product_price, product_image, product_desc, product_id
+            from product
+            where product_category_id = ${categoryId}`;
+        }
+        else{
+            query = `select product_name, product_price, product_image, product_desc, product_id
+            from product`;
+        }
+
 
         sqlRequest.query(query, (err, data) => {
             let apiData = data.recordsets;
