@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 // import Navbar from './navbar';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/cart/productCart'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Getsony = () => {
     const [products, setProducts] = useState([]);
