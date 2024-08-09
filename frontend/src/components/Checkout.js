@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/cart.context';
+// import Navbar from './navbar';
 
 const Checkout = () => {
     const { cart } = useCart();
@@ -38,6 +39,7 @@ const Checkout = () => {
 
     return (
         <div className="bg-gray-100 min-h-screen">
+            {/* <Navbar /> */}
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <h1 className="text-3xl font-bold text-gray-900">Checkout</h1>
                 <div className="mt-8">

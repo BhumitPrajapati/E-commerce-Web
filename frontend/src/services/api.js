@@ -37,9 +37,12 @@ export const getProducts = async (categoryId, productId) => {
 
 export const adminLogin = async (username, password) => {
     try {
+        console.log(username, password);
         const response = await api.post('/login', { username, password });
         console.log('Response from adminLogin: ', response.data);
-        return response.data;
+        localStorage.setItem('authToken', response.data.token);
+        window.location.href = '/admin-dashboard';
+        // return response.data;
     } catch (error) {
         console.log('Error logging in: ', error);
         throw error;
