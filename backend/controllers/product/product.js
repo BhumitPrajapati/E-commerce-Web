@@ -23,7 +23,6 @@ const getProduct = async (req, res) => {
             from product`;
         }
 
-
         sqlRequest.query(query, (err, data) => {
             let apiData = data.recordsets;
             if (apiData.length !== 0) {

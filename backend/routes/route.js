@@ -9,10 +9,12 @@ const { login } = require('../controllers/admin/login.js')
 const router = express.Router();
 
 router.route('/').get(productController.getProduct);
+
 router.route('/upload').post(upload.single('image'), imageController.uploadImage);
 router.route('/login').post(login)
 router.route('/addProduct').post(adminDashboardController.addProduct);
-router.route('/updateProduct').post(adminDashboardController.updateProduct);
+router.route('/updateProduct/:id').put(upload.single('product_image'), adminDashboardController.updateProduct);
+router.route('/deleteProduct/:id').delete(adminDashboardController.deleteProduct);
 
 
 module.exports = router;

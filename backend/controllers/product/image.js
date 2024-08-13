@@ -6,20 +6,18 @@ const uploadImage = async (req, res) => {
     try {
         // Upload image to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path);
-        console.log(result);        
+        console.log(result);
         url = result.secure_url;
         const { originalname, mimetype } = req.file;
         const { name, price, qty, description, categoryId } = req.body;
-        // console.log(url, req.file, req.body);
-        
-        
+
         if (!isNullUndefinedOrBlank(url) && !isNullUndefinedOrBlank(name) && !isNullUndefinedOrBlank(price) && !isNullUndefinedOrBlank(qty) && !isNullUndefinedOrBlank(description) && !isNullUndefinedOrBlank(categoryId)) {
             // Store URL in SQL Server
             const sqlRequest = await new sql.Request(connection);
 
             const sqlQuery = `insert into product (product_name, product_price, product_image, product_qty, product_desc, product_category_id) values ('${name}', '${price}', '${url}', ${qty}, '${description}', ${categoryId})`;
             // console.log(sqlQuery);
-            
+
             await sqlRequest
                 .input('url', sql.NVarChar(sql.MAX), url)
                 .input('originalname', sql.NVarChar(sql.MAX), originalname)
@@ -54,32 +52,4 @@ const uploadImage = async (req, res) => {
     }
 };
 
-getImages = async (req, res) => {
-    try {
-        const sqlRequest = await new sql.Request(connection);
-        const sqlQuery = `SELECT * FROM product;`;
-
-        sqlRequest.query(sqlQuery).then((data) => {
-            let apiData = data.recordset;
-            // console.log(apiData);
-            if (apiData.length !== 0) {
-                let finalData = message(200, 'Successfully fetching the data', apiData, null, 'api/getImages');
-                res.status(200).json(finalData);
-            } else {
-                let finalData = message(500, 'Something was wrong', null, '', 'api/getImages');
-                res.status(500).json(finalData);
-            }
-        }).catch(err => {
-            console.log(err);
-            let finalData = message(500, 'Something went wrong', null, '', 'api/getImages');
-            res.status(500).json(finalData);
-        });
-    } catch (err) {
-        console.log(err);
-        let finalData = message(500, 'Something was wrong', null, '', 'api/getImages');
-        res.status(500).json(finalData);
-    }
-};
-
-
-module.exports = { uploadImage, getImages };
+module.exports = { uploadImage };

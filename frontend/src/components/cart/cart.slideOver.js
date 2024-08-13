@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../../context/cart.context';
 
 const CartSlideOver = ({ isOpen, toggleCart }) => {
-    const { cart, removeFromCart, clearCart } = useCart();
+    const { cart, removeFromCart } = useCart();
 
     return (
         <div className={`fixed inset-0 overflow-hidden ${isOpen ? 'block' : 'hidden'}`}>

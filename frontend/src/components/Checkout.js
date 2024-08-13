@@ -4,8 +4,7 @@ import { useCart } from '../context/cart.context';
 
 const Checkout = () => {
     const { cart } = useCart();
-    console.log('Cart:', cart);
-    
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,10 +28,6 @@ const Checkout = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Handle form submission and payment processing
-        console.log('Form Data:', formData);
-        console.log('Cart:', cart);
-        // Redirect or show success message
     };
 
     const totalPrice = cart.reduce((total, product) => total + parseFloat(product.product_price), 0).toFixed(2);

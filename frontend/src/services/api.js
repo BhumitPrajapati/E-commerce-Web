@@ -42,3 +42,22 @@ export const addProduct = async (formData) => {
         throw error;
     }
 };
+
+export const updateProduct = async (id, formData) => {
+    try {
+        const response = await api.put(`/updateProduct/${id}`, formData);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export const deleteProduct = async (id, inputData) => {
+    try {
+        const response = await api.delete(`/deleteProduct/${id}`, inputData);
+        return response.data;
+    } catch (error) {
+        console.log('Error Deleting product: ', error);
+        throw error;
+    }
+};

@@ -10,7 +10,6 @@ const AdminLogin = () => {
         e.preventDefault();
         try {
             await adminLogin(username, password);
-            // Optionally handle further actions on successful login
         } catch (error) {
             console.error('Login failed:', error);
             setError('Login failed. Please check your username and password.');
@@ -48,9 +47,6 @@ const AdminLogin = () => {
                     <div>
                         <div className="flex items-center justify-between">
                             <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                            {/* <div className="text-sm">
-                                <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-                            </div> */}
                         </div>
                         <div className="mt-2">
                             <input
@@ -77,13 +73,6 @@ const AdminLogin = () => {
                         </button>
                     </div>
                 </form>
-
-                {/* <p className="mt-10 text-center text-sm text-gray-500">
-                    Not a member?{' '}
-                    <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                        Start a 14 day free trial
-                    </a>
-                </p> */}
             </div>
         </div>
     );
