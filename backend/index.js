@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { connection, sql } = require('./db/config');
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/api', router);
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 
 const start = async () => {
      await connection.connect()

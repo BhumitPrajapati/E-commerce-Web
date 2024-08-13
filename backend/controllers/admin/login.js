@@ -2,7 +2,9 @@ const { sql, connection } = require('../../db/config');
 const { message } = require('../../middlewares/msgHandler');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.SECRET_KEY || 'Admin!123'; // Use environment variable for the secret key
+require('dotenv').config();
+
+const SECRET_KEY = process.env.SECRET_KEY; 
 
 const login = async (req, res) => {
     const sqlRequest = new sql.Request(connection);

@@ -1,11 +1,12 @@
 const express = require('express');
 const sql = require('mssql');
+require('dotenv').config();
 
 var config = {
-    "server": "Bhumit/SQLEXPRESS",
-    "database": "EcommerceDB",
-    "user": "sa",
-    "password": "sa",
+    "server": process.env.DB_SERVER,
+    "database": process.env.DB_NAME,
+    "user": process.env.DB_USER,
+    "password": process.env.DB_PASSWORD,
     "options": {
         "trustedconnection": true,
         "enableArithAbort": true,
