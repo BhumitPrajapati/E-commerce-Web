@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const port = 3030 || 3000;
+
 const api = axios.create({
-    baseURL: 'http://localhost:3030/api',
+    baseURL: `http://localhost:${port}/api`,
 });
 
 export const getProducts = async (categoryId, productId) => {
