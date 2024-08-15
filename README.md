@@ -75,8 +75,8 @@ To set up the database on another machine:
     DB_USER=your-sql-server-username
     DB_PASS=your-sql-server-password
     DB_NAME=your-database-name
-
-   ```
+    ```
+    
 5. Start the backend server:
     ```bash
     npm start
