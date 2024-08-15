@@ -6,7 +6,7 @@ const uploadImage = async (req, res) => {
     try {
         // Upload image to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path);
-        console.log(result);
+        // console.log(result);
         url = result.secure_url;
         const { originalname, mimetype } = req.file;
         const { name, price, qty, description, categoryId } = req.body;

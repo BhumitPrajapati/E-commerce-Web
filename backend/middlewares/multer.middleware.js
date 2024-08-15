@@ -57,8 +57,6 @@ const deleteFiles = () => {
     });
 };
 
-// Schedule the file deletion every 24 hours
 setInterval(deleteFiles, 864000);
-
 
 module.exports = upload;
