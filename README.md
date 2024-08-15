@@ -6,7 +6,7 @@
 
 ### Technology Stack
 
-**Frontend**: ReactJS  
+**Frontend**: ReactJS [with Tailwind CSS]
 **Backend**: Node.js with Express, [cloudinary for store Image]  
 **Database**: Sql Server
 
